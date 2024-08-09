@@ -1,0 +1,103 @@
+<div class="form-wrapper">
+    <span class="register-btn desktop">Авторизация</span>
+    <h3 class="mobile">
+      <img src="../assets/logo.svg" alt="logo">
+       <span class="spann">
+         Blockpay
+       </span>
+     </h3>
+    <div class="right-wrapper">
+      <div class="header">
+        <h3 class="desktop">
+          <img src="../assets/logo.svg" alt="logo">
+          <span>
+            Blockpay
+          </span>
+        </h3>
+        <span class="register-btn mobile">Авторизация</span>
+        <h1>Добро пожаловать в Blockpay!</h1>
+        <span>Войдите в аккаунт используя логин и пароль</span>
+      </div>
+      <div style="position: relative;">
+
+          <div #toggleButton (click)="toggleSelect()" class="select" [ngClass]="visible? 'select-visible': 'select-hiden'">
+            <div class="opt">
+                <div class="opt-other">
+                    <svg *ngIf="visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="22" height="22" rx="7" fill="#9FFA9C"/>
+                        <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                        <path d="M6.75 12.75L10.25 16.25L17.25 8.75" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    <span>{{options}}</span>
+                </div>
+                <svg [ngClass]="visible? 'visible' : 'hidden' " class="icon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10.5L12 15.5L17 10.5" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+            </div>          
+        </div>
+        <div *ngIf="visible" class="options" #menu>
+          <label *ngIf="options !== 'Мерч'" class="opt-other" (click)="setOption('Мерч')">
+            <svg *ngIf="options === 'Мерч'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="22" height="22" rx="7" fill="#9FFA9C"/>
+                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                <path d="M6.75 12.75L10.25 16.25L17.25 8.75" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg *ngIf="options !== 'Мерч'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                    </svg>
+                                    
+              Мерч
+          </label>
+          <label *ngIf="options !== 'Админ'" class="opt-other" (click)="setOption('Админ')"  (checked)="options === 'Админ'">
+            <svg *ngIf="options === 'Админ'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="22" height="22" rx="7" fill="#9FFA9C"/>
+                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                <path d="M6.75 12.75L10.25 16.25L17.25 8.75" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg *ngIf="options !== 'Админ'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                    </svg>
+                
+              Админ
+          </label>
+          <label *ngIf="options !== 'Трейдер'" class="opt-other" (click)="setOption('Админ')"  (checked)="options === 'Админ'">
+            <svg *ngIf="options === 'Трейдер'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="22" height="22" rx="7" fill="#9FFA9C"/>
+                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                <path d="M6.75 12.75L10.25 16.25L17.25 8.75" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg *ngIf="options !== 'Трейдер'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#9FFA9C" stroke-width="2"/>
+                    </svg>
+                
+              Трейдер
+          </label>
+        </div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form" action="">
+        <label class="label-wrapp">
+          Логин
+          <input  formControlName="email" type="email" required placeholder="Введите свой логин">
+        </label>
+        <label class="label-wrapp">
+          Пароль
+          <input [type]="passwordType"  formControlName="password" required placeholder="Введите свой пароль">
+          
+            <svg (click)="handleShowPassword()" class="hide-icon" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 13.5C6.6 5.5 17.4 5.5 21 13.5" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 17.5C11.606 17.5 11.2159 17.4224 10.8519 17.2716C10.488 17.1209 10.1573 16.8999 9.87868 16.6213C9.6001 16.3427 9.37913 16.012 9.22836 15.6481C9.0776 15.2841 9 14.894 9 14.5C9 14.106 9.0776 13.7159 9.22836 13.3519C9.37913 12.988 9.6001 12.6573 9.87868 12.3787C10.1573 12.1001 10.488 11.8791 10.8519 11.7284C11.2159 11.5776 11.606 11.5 12 11.5C12.7956 11.5 13.5587 11.8161 14.1213 12.3787C14.6839 12.9413 15 13.7044 15 14.5C15 15.2956 14.6839 16.0587 14.1213 16.6213C13.5587 17.1839 12.7956 17.5 12 17.5Z" stroke="#297769" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          
+            
+        </label>
+        <div class="btn-group">
+          <button class="submit-btn" type="submit">Войти в аккаунт 
+            <svg  width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 9C0.447715 9 -4.82823e-08 8.55228 0 8C4.82823e-08 7.44772 0.447715 7 1 7L1 9ZM13.7071 7.29289C14.0976 7.68342 14.0976 8.31658 13.7071 8.70711L7.34315 15.0711C6.95262 15.4616 6.31946 15.4616 5.92893 15.0711C5.53841 14.6805 5.53841 14.0474 5.92893 13.6569L11.5858 8L5.92893 2.34315C5.53841 1.95262 5.53841 1.31946 5.92893 0.928933C6.31946 0.538408 6.95262 0.538408 7.34315 0.928933L13.7071 7.29289ZM1 7L13 7L13 9L1 9L1 7Z" fill="#297769"/>
+            </svg>
+            </button>
+          <a class="link" href="/sign-up">Создать новый аккаунт</a>
+        </div>
+      </form>
+    </div>
+  </div>

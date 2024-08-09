@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: cygre-regular;
+    src: url(assets/fonts/Cygre-Regular.ttf) format("opentype");
+  }
+
+@font-face {
+    font-family: cygre-bold;
+    src: url(assets/fonts/Cygre-ExtraBold.ttf) format("opentype");
+  }
+body {
+    box-sizing: border-box;
+    background: #F1F3F3;
+    font-family: cygre-regular;
+}
+
+button {
+    font-family: cygre-regular;
+}
+
+input {
+    font-family: cygre-regular;
+}
